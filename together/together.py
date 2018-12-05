@@ -1,5 +1,6 @@
 import csv
 import sys
+import random
 
 class Together:
 
@@ -33,6 +34,18 @@ class Together:
             else:
                 print('Please enter a valid number')
 
+    def process_list(self):
+        new_list = list(set(self.name_list))
+        random.shuffle(new_list)
+        for i in range(0, len(new_list), self.group_size):
+            self.output_list.append(new_list[i:i+self.group_size])
+
+    def write_list_to_csv(self):
+        with open('{}.output'.format(self.input_file), 'w') as outfile:
+            writer = csv.writer(outfile)
+            writer.writerow([i for i in self.output_list])
+
+
 
 
 
@@ -43,3 +56,5 @@ class Together:
         self.load_input_file()
         self.csv_read_to_list()
         self.set_group_size()
+        self.process_list()
+        self.write_list_to_csv()
