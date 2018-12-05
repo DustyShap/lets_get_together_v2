@@ -44,11 +44,10 @@ class TogetherTest(unittest.TestCase):
         self.together.process_list()
         assert self.together.group_size != len(self.together.name_list)
 
-
     def test_it_writes_list_to_csv(self):
         self.together.csv_read_to_list()
         self.together.group_size = 2
         self.together.process_list()
         self.together.write_list_to_csv()
-        assert os.path.isfile('{}.output'.format(self.together.input_file))
-        os.remove('{}.output'.format(self.together.input_file))
+        assert os.path.isfile('{}.output.txt'.format(self.together.input_file))
+        os.remove('{}.output.txt'.format(self.together.input_file))

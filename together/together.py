@@ -40,21 +40,18 @@ class Together:
         for i in range(0, len(new_list), self.group_size):
             self.output_list.append(new_list[i:i+self.group_size])
 
-    def write_list_to_csv(self):
-        with open('{}.output'.format(self.input_file), 'w') as outfile:
-            writer = csv.writer(outfile)
-            writer.writerow([i for i in self.output_list])
-
-
-
-
-
-
-
+    def print_list(self):
+        for group in self.output_list:
+            print('-----------')
+            print('Group {}'.format(self.output_list.index(group)+1))
+            print('-----------')
+            for name in group:
+                print(name)
+            print('-----------')
 
     def run(self):
         self.load_input_file()
         self.csv_read_to_list()
         self.set_group_size()
         self.process_list()
-        self.write_list_to_csv()
+        self.print_list()
