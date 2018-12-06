@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Script to accept command line arguments and kick off the generator tool"""
 import os
 import sys
 
@@ -6,7 +7,8 @@ sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.par
 
 from together.together import Together
 
-if len(sys.argv) is not 2:
-  print('Usage: generate <inputfile.csv>')
+if len(sys.argv) != 2:
+    print('To generate lists from input: scripts/generate <inputfile.csv>')
+    print('To generate lists from faker data: scripts/generate faker')
 else:
-  Together(sys.argv[1]).run()
+    Together(sys.argv[1].strip()).run()

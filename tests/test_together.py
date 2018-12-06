@@ -17,7 +17,7 @@ class TogetherTest(unittest.TestCase):
         self.together.csv_read_to_list()
 
     def test_it_loads_input_file(self):
-        with open(self.together.input_file) as f:
+        with open(self.together.input) as f:
             t = csv.reader(f)
         assert '_csv.reader' in str(t)
 
@@ -43,11 +43,3 @@ class TogetherTest(unittest.TestCase):
         self.together.group_size = 2
         self.together.process_list()
         assert self.together.group_size != len(self.together.name_list)
-
-    def test_it_writes_list_to_csv(self):
-        self.together.csv_read_to_list()
-        self.together.group_size = 2
-        self.together.process_list()
-        self.together.write_list_to_csv()
-        assert os.path.isfile('{}.output.txt'.format(self.together.input_file))
-        os.remove('{}.output.txt'.format(self.together.input_file))
