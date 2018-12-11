@@ -22,10 +22,9 @@ class Together:
             print('Usage: scripts/generate <input_file.csv>')
             sys.exit()
 
-    def csv_read_to_list(self):
+    def file_read_to_list(self):
         with open(self.input) as f:
-            reader = csv.reader(f)
-            self.name_list = [n[0].strip() for n in list(reader)]
+            self.name_list = [n.strip() for n in list(f)]
 
     def set_group_size(self):
         valid_input = False
@@ -61,11 +60,9 @@ class Together:
     def print_list(self):
         for group in self.output_list:
             print('-----------')
-            print('Group {}'.format(self.output_list.index(group)+1))
-            print('-----------')
-            for name in group:
-                print(name)
-            print('-----------')
+            print('Group {}: {}'.format(self.output_list.index(group)+1,
+                                       [name for name in group]))
+
 
     def reshuffle_or_exit(self):
         """Method to allow reshuffle list"""
@@ -83,7 +80,7 @@ class Together:
         """Main method that kicks off the program"""
         if self.input != 'faker':
             self.load_input_file()
-            self.csv_read_to_list()
+            self.file_read_to_list()
         else:
             self.set_faker_names_length()
             self.set_faker_names_list()
