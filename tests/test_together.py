@@ -22,7 +22,6 @@ def test_faker_names_setup(faker_together):
         assert len(faker_together.name_list) == 6
 
 
-
 # Test input file
 @pytest.fixture
 def together():
