@@ -1,7 +1,7 @@
+# pylint: disable=missing-docstring,wrong-import-position,invalid-name,redefined-outer-name
+
 import os
 import sys
-import csv
-import unittest
 import pytest
 import mock
 
@@ -24,7 +24,6 @@ def test_faker_names_setup(faker_together):
 
 
 # Test input file
-
 @pytest.fixture
 def together():
     together = Together('test_list.txt')
@@ -35,17 +34,17 @@ def together():
 
 def test_it_loads_input_file(together):
     with open(together.input) as f:
-        assert 'Tim' == list(f)[1].strip()
+        assert list(f)[1].strip() == 'Tim'
 
 def test_it_loads_file_into_list(together):
-    assert type(together.name_list) == list
+    assert isinstance(together.name_list, list)
     assert len(together.name_list) == 5
 
 def test_it_chooses_group_size(together):
     with mock.patch('builtins.input', return_value='6'):
         together.set_group_size()
         assert together.group_size == 6
-        assert type(together.group_size) == int
+        assert isinstance(together.group_size,int)
 
 def test_it_processes_the_list(together):
     together.file_read_to_list()

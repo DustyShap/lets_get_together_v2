@@ -1,4 +1,5 @@
-import csv
+# pylint: disable=missing-docstring,unused-argument,redefined-outer-name,too-many-arguments,invalid-name,redefined-builtin,no-member
+
 import sys
 import random
 from faker import Faker
@@ -61,7 +62,7 @@ class Together:
         for group in self.output_list:
             print('-----------')
             print('Group {}: {}'.format(self.output_list.index(group)+1,
-                                       [name for name in group]))
+                                        [name for name in group]))
 
 
     def reshuffle_or_exit(self):
