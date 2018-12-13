@@ -14,7 +14,7 @@ class Together:
         self.faker_names_amount = None
 
     def load_input_file(self):
-        """Load input CSV File"""
+        """Load input File"""
         try:
             open(self.input)
         except FileNotFoundError:

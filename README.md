@@ -7,19 +7,18 @@ This program was written with Python 3.7.0
 
 ### Setup Instructions
 
-1.Install requirements:
+Install requirements:
 
 `pip install -r requirements.txt`
-
-2.Run Program:
 
 
 ### Application Instructions
 
+`scripts/generate <filename.csv>` to generate groups from an input file
 
-
+`scripts/generate faker` to generate groups from randomly generated names using the Faker library
 
 
 
 ### Running tests
-You can run this project's tests by inputting `pytest` on the command line.
+You can run this project's tests by inputting `scripts/test` from the command line.
