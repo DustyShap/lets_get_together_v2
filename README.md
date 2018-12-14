@@ -14,7 +14,7 @@ Install requirements:
 
 ### Application Instructions
 
-`scripts/generate <filename.csv>` to generate groups from an input file
+`scripts/generate <filename>` to generate groups from an input file (newline separated file of names)
 
 `scripts/generate faker` to generate groups from randomly generated names using the Faker library
 

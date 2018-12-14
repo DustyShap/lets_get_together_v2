@@ -9,26 +9,16 @@ sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.par
 
 from together.together import Together
 
-#Faker Tests
-@pytest.fixture
-def faker_together():
-    return Together('faker')
-
-def test_faker_names_setup(faker_together):
-    with mock.patch('builtins.input', return_value='6'):
-        faker_together.set_faker_names_length()
-        assert faker_together.faker_names_amount == 6
-        faker_together.set_faker_names_list()
-        assert len(faker_together.name_list) == 6
-
-
-# Test input file
 @pytest.fixture
 def together():
     together = Together('test_list.txt')
     together.load_input_file()
     together.file_read_to_list()
     return together
+
+@pytest.fixture
+def faker_together():
+    return Together('faker')
 
 
 def test_it_loads_input_file(together):
@@ -38,6 +28,13 @@ def test_it_loads_input_file(together):
 def test_it_loads_file_into_list(together):
     assert isinstance(together.name_list, list)
     assert len(together.name_list) == 5
+
+def test_faker_names_setup(faker_together):
+    with mock.patch('builtins.input', return_value='6'):
+        faker_together.set_faker_names_length()
+        assert faker_together.faker_names_amount == 6
+        faker_together.set_faker_names_list()
+        assert len(faker_together.name_list) == 6
 
 def test_it_chooses_group_size(together):
     with mock.patch('builtins.input', return_value='6'):

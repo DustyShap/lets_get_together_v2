@@ -4,6 +4,7 @@
 import sys
 import random
 from faker import Faker
+
 fake = Faker()
 
 class Together:
